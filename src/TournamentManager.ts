@@ -41,6 +41,7 @@ export interface TournamentInterface {
 	nextRound(tournamentId: string, skip?: boolean): Promise<void>;
 	getPlayerDeck(tournamentId: string, playerId: string): Promise<Deck>;
 	dropPlayer(tournamentId: string, playerId: string, force?: boolean): Promise<void>;
+	prunePlayers(tournamentId: string): Promise<string[]>;
 	syncTournament(tournamentId: string): Promise<void>;
 	getConfirmed(tournamentId: string): Promise<DatabasePlayer[]>;
 	registerBye(tournamentId: string, playerId: string): Promise<string[]>;
@@ -805,6 +806,15 @@ export class TournamentManager implements TournamentInterface {
 		for (const m of messages) {
 			await this.discord.removeUserReaction(m.channelId, m.messageId, this.CHECK_EMOJI, playerId);
 		}
+	}
+
+	public async prunePlayers(tournamentId: string): Promise<string[]> {
+		const tournament = await this.database.getTournament(tournamentId);
+		const leftPlayers = tournament.players.filter(p => !this.discord.isUserInGuild(p.discordId, tournament.server));
+		for (const player of leftPlayers) {
+			await this.dropPlayer(tournamentId, player.discordId, true);
+		}
+		return leftPlayers.map(p => p.discordId);
 	}
 
 	public async syncTournament(tournamentId: string): Promise<void> {

@@ -215,4 +215,13 @@ export class DiscordWrapperEris implements DiscordWrapper {
 			logger.error(e);
 		}
 	}
+
+	public async isUserInGuild(userID: string, guildId: string): Promise<boolean> {
+		const guild = this.bot.guilds.get(guildId);
+		if (!guild) {
+			// TODO: getRESTGuilds? return true as stopgap measure bc don't want to drop players carelessly
+			return true;
+		}
+		return !!guild.members.get(userID);
+	}
 }

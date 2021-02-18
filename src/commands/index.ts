@@ -14,6 +14,7 @@ export { default as list } from "./list";
 export { default as open } from "./open";
 export { default as pie } from "./pie";
 export { default as players } from "./players";
+export { default as prune } from "./prune";
 export { default as removebye } from "./removebye";
 export { default as removechannel } from "./removechannel";
 export { default as removehost } from "./removehost";

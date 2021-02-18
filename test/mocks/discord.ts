@@ -118,4 +118,8 @@ export class DiscordWrapperMock implements DiscordWrapper {
 		}
 		this.messages[userId] = content;
 	}
+
+	public async isUserInGuild(): Promise<boolean> {
+		return true;
+	}
 }

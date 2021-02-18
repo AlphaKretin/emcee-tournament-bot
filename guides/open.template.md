@@ -4,6 +4,9 @@ Players can drop themselves.
 If you need, you can also drop players.
 ```
 mc!forcedrop {}|@User```
+If players have left the server, you may have trouble mentioning them. You can drop all such players at once.
+```
+mc!prune {}```
 **Add bye**
 Players with a bye don't play in round 1.
 This gives them a free win.

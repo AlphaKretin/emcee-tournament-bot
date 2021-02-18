@@ -108,4 +108,8 @@ export class TournamentMock implements TournamentInterface {
 	public async removeBye(): Promise<string[]> {
 		return ["bye1"];
 	}
+
+	public async prunePlayers(): Promise<string[]> {
+		return [];
+	}
 }

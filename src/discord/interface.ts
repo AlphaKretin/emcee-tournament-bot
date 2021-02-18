@@ -60,6 +60,7 @@ export interface DiscordWrapper {
 	getUsername(userId: string): string;
 	getRESTUsername(userId: string): Promise<string | null>;
 	sendDirectMessage(userId: string, content: DiscordMessageOut): Promise<void>;
+	isUserInGuild(userId: string, guildId: string): Promise<boolean>;
 }
 
 export class DiscordInterface {
@@ -139,6 +140,10 @@ export class DiscordInterface {
 
 	public async sendDirectMessage(userId: string, content: DiscordMessageOut): Promise<void> {
 		await this.api.sendDirectMessage(userId, content);
+	}
+
+	public async isUserInGuild(userId: string, guildId: string): Promise<boolean> {
+		return await this.api.isUserInGuild(userId, guildId);
 	}
 }
 
