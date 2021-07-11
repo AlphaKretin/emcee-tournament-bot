@@ -35,9 +35,9 @@ const command: CommandDefinition = {
 			await reply(msg, `${name} not found in **${tournament.name}**.`);
 			return;
 		}
-		if (participant.tournament.status === TournamentStatus.COMPLETE) {
+		if (tournament.status === TournamentStatus.COMPLETE) {
 			log({ player, event: "already complete" });
-			await reply(msg, `**${participant.tournament.name}** has already concluded!`);
+			await reply(msg, `**${tournament.name}** has already concluded!`);
 			return;
 		}
 		if (participant.confirmed) {

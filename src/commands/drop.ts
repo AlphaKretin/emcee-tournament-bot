@@ -13,7 +13,10 @@ const command: CommandDefinition = {
 	executor: async (msg, args, support) => {
 		// TODO: infer tournamentId from tournament player is in? gotta make player-facing features as simple as possible
 		const [id] = args;
-		const participant = await Participant.findOne({ tournamentId: id, discordId: msg.author.id });
+		const participant = await Participant.findOne({
+			where: { tournamentId: id, discordId: msg.author.id },
+			relations: ["tournament"]
+		});
 		function log(payload: Record<string, unknown>): void {
 			logger.verbose(
 				JSON.stringify({
