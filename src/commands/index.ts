@@ -11,6 +11,7 @@ export { default as finish } from "./finish";
 export { default as forcedrop } from "./forcedrop";
 export { default as forcescore } from "./forcescore";
 export { default as help } from "./help";
+export { default as info } from "./info";
 export { default as list } from "./list";
 export { default as open } from "./open";
 export { default as removebye } from "./removebye";
