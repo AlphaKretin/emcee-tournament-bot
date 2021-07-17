@@ -3,6 +3,7 @@ export { default as addchannel } from "./addchannel";
 export { default as addhost } from "./addhost";
 export { default as banlist } from "./banlist";
 export { default as cancel } from "./cancel";
+export { default as capacity } from "./capacity";
 export { default as create } from "./create";
 export { default as csv } from "./csv";
 export { default as deck } from "./deck";
